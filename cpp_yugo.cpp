@@ -1,8 +1,14 @@
 // Doing it CPP style
+
+#include <stdio.h>
+#include <string.h>
 #include <iostream>
 #include <bitset>
 #include <string>
 #include <algorithm>
+#include <sstream>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -14,7 +20,16 @@ int main() {
     string binary = bitset<48>(array[a]).to_string(); //to binary
     replace ( binary.begin(), binary.end(), '0', ' ');
     replace ( binary.begin(), binary.end(), '1', '#');
-    cout << binary << endl;
+  
+    // Print out characters one by one
+    int k = 0; 
+    while ( binary[k] != '\0' )
+    {
+      cout << binary[k] << flush;
+      std::this_thread::sleep_for(std::chrono::milliseconds(20));
+      k++;
+    };
+    cout << endl;
   } 
   return 0;
 }
